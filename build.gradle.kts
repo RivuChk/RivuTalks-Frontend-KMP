@@ -11,7 +11,7 @@ buildscript {
 
     dependencies {
         // keeping this here to allow AS to automatically update
-        classpath("com.android.tools.build:gradle:7.4.0")
+        classpath("com.android.tools.build:gradle:7.4.0-beta02")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
         classpath("org.jetbrains.kotlin:kotlin-serialization:${kotlinVersion}")
 
