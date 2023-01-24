@@ -29,6 +29,7 @@ android {
     namespace = "com.surrus.common"
 }
 
+
 kotlin {
     listOf(
         iosX64(),
@@ -41,15 +42,16 @@ kotlin {
     }
 
 
-    val sdkName: String? = System.getenv("SDK_NAME")
+    val baseUrl: String? = System.getenv("base_url")
+    //TODO: figure out how to pass it to Koin
 
     android()
     jvm()
 
     cocoapods {
         // Configure fields required by CocoaPods.
-        summary = "PeopleInSpace"
-        homepage = "https://github.com/joreilly/PeopleInSpace"
+        summary = "RivuTalks"
+        homepage = "https://github.com/RivuChk/RivuTalks-Frontend-KMP"
     }
 
     js(IR) {
@@ -135,7 +137,7 @@ kotlin {
             iosSimulatorArm64Test.dependsOn(this)
         }
 
-        
+
         val jsMain by getting {
             dependencies {
                 implementation(Deps.Ktor.clientJs)
@@ -152,14 +154,14 @@ tasks.withType<KotlinCompile> {
 }
 
 sqldelight {
-    database("PeopleInSpaceDatabase") {
-        packageName = "com.surrus.peopleinspace.db"
+    database("RivuTalksDatabase") {
+        packageName = "dev.rivu.rivutalks.db"
         sourceFolders = listOf("sqldelight")
     }
 }
 
 multiplatformSwiftPackage {
-    packageName("PeopleInSpaceKit")
+    packageName("RivuTalksKit")
     swiftToolsVersion("5.3")
     targetPlatforms {
         iOS { v("14") }

@@ -13,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.json.Json
 import org.koin.core.context.startKoin
+import org.koin.core.qualifier.named
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
 
@@ -35,7 +36,11 @@ fun commonModule(enableNetworkLogs: Boolean) = module {
     single<RivuTalksRepositoryInterface> { RivuTalksRepository() }
 
     single { PeopleInSpaceApi(get()) }
-    single { RivuTalksApi(get()) }
+    single { RivuTalksApi(get(), get(named("baseUrl"))) }
+
+    single(named("baseUrl")) {
+        "https://rivutalks-api.rivu.dev/api/v1"
+    }
 }
 
 fun createJson() = Json { isLenient = true; ignoreUnknownKeys = true }

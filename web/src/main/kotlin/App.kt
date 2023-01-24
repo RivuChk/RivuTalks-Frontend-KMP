@@ -2,6 +2,7 @@ import dev.rivu.rivutalks.common.remote.Assignment
 import dev.rivu.rivutalks.common.remote.IssPosition
 import components.*
 import components.materialui.*
+import dev.rivu.rivutalks.common.remote.Blog
 import kotlinx.coroutines.*
 import kotlinx.css.margin
 import kotlinx.css.padding
@@ -17,20 +18,19 @@ val App = functionalComponent<RProps> {
     val rivutalksRepository = appDependencies.rivutalksRepository
 
     val (people, setPeople) = useState(emptyList<Assignment>())
+    val (blogs, setBlogs) = useState(emptyList<Blog>())
     val (issPosition, setIssPosition) = useState(IssPosition(0.0, 0.0))
     val (selectedPerson, setSelectedPerson) = useState<Assignment?>(null)
+    val (selectedBlog, setSelectedBlog) = useState<Blog?>(null)
 
     useEffectWithCleanup(dependencies = listOf()) {
         val mainScope = MainScope()
 
         mainScope.launch {
-            val people = peopleRepository.fetchPeople()
-            setPeople(people)
-            setSelectedPerson(people.first())
+            val blogs = rivutalksRepository.fetchBlogs()
+            setBlogs(blogs)
+            setSelectedBlog(blogs.firstOrNull())
 
-            peopleRepository.pollISSPosition().collect {
-                setIssPosition(it)
-            }
         }
         return@useEffectWithCleanup { mainScope.cancel() }
     }
@@ -56,10 +56,10 @@ val App = functionalComponent<RProps> {
                     attrs {
                         container = true
                         spacing = 4
-                        justify = "flex-start"
+                        justify = "flex-mid"
                         alignItems = "stretch"
                     }
-                    Typography("h6", "Rivu Talks")
+                    Typography("h4", "Rivu Talks")
 
                 }
 
@@ -81,34 +81,18 @@ val App = functionalComponent<RProps> {
             Grid {
                 attrs {
                     item = true
-                    md = 4
+                    md = 12
                     xs = 12
                 }
-                PeopleList(
-                    people = people,
-                    selectedPerson = selectedPerson,
+                BlogList(
+                    blogs = blogs,
+                    selectedBlog = selectedBlog,
                     onSelect = {
-                        setSelectedPerson(it)
+                        setSelectedBlog(it)
                     }
                 )
             }
-            Grid {
-                attrs {
-                    item = true
-                    md = 8
-                    xs = 12
-                }
 
-                selectedPerson?.let { person ->
-                    Card {
-                        css {
-                            padding(16.px)
-                        }
-
-                        PersonDetails(person)
-                    }
-                }
-            }
         }
 
     }

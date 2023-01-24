@@ -3,9 +3,6 @@ package dev.rivu.rivutalks.common.repository
 import co.touchlab.kermit.Logger
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutineScope
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
-import com.squareup.sqldelight.runtime.coroutines.asFlow
-import com.squareup.sqldelight.runtime.coroutines.mapToList
-import dev.rivu.rivutalks.common.di.PeopleInSpaceDatabaseWrapper
 import dev.rivu.rivutalks.common.remote.Assignment
 import dev.rivu.rivutalks.common.remote.IssPosition
 import dev.rivu.rivutalks.common.remote.PeopleInSpaceApi
@@ -29,8 +26,8 @@ class PeopleInSpaceRepository : KoinComponent, PeopleInSpaceRepositoryInterface 
 
     @NativeCoroutineScope
     val coroutineScope: CoroutineScope = MainScope()
-    private val peopleInSpaceDatabase: PeopleInSpaceDatabaseWrapper by inject()
-    private val peopleInSpaceQueries = peopleInSpaceDatabase.instance?.peopleInSpaceQueries
+    //private val peopleInSpaceDatabase: PeopleInSpaceDatabaseWrapper by inject()
+    //private val peopleInSpaceQueries = peopleInSpaceDatabase.instance?.peopleInSpaceQueries
 
     val logger = Logger.withTag("PeopleInSpaceRepository")
 
@@ -44,11 +41,11 @@ class PeopleInSpaceRepository : KoinComponent, PeopleInSpaceRepositoryInterface 
     override fun fetchPeopleAsFlow(): Flow<List<Assignment>> {
         // the main reason we need to do this check is that sqldelight isn't currently
         // setup for javascript client
-        return peopleInSpaceQueries?.selectAll(
+        return /*peopleInSpaceQueries?.selectAll(
             mapper = { name, craft, personImageUrl, personBio ->
                 Assignment(name = name, craft = craft, personImageUrl = personImageUrl, personBio = personBio)
             }
-        )?.asFlow()?.mapToList() ?: flowOf(emptyList())
+        )?.asFlow()?.mapToList() ?:*/ flowOf(emptyList())
     }
 
     override suspend fun fetchAndStorePeople() {
@@ -59,7 +56,7 @@ class PeopleInSpaceRepository : KoinComponent, PeopleInSpaceRepositoryInterface 
             // this is very basic implementation for now that removes all existing rows
             // in db and then inserts results from api request
             // using "transaction" accelerate the batch of queries, especially inserting
-            peopleInSpaceQueries?.transaction {
+            /*peopleInSpaceQueries?.transaction {
                 peopleInSpaceQueries.deleteAll()
                 result.people.forEach {
                     peopleInSpaceQueries.insertItem(
@@ -69,7 +66,7 @@ class PeopleInSpaceRepository : KoinComponent, PeopleInSpaceRepositoryInterface 
                         it.personBio
                     )
                 }
-            }
+            }*/
         } catch (e: Exception) {
             // TODO report error up to UI
             logger.w(e) { "Exception during fetchAndStorePeople: $e" }

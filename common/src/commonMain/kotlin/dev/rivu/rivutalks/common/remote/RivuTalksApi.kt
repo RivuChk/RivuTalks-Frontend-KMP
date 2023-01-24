@@ -33,7 +33,7 @@ data class Site(
 
 class RivuTalksApi(
     private val client: HttpClient,
-    private val baseUrl: String = "https://rivutalks-api.rivu.dev/api/v1",
+    private val baseUrl: String,
 ) : KoinComponent {
     suspend fun fetchBlogs() = client.get("$baseUrl/blogs").body<BlogsResult>()
 }

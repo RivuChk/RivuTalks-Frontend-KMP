@@ -1,6 +1,5 @@
 package com.surrus.peopleinspace
 
-import dev.rivu.rivutalks.common.di.PeopleInSpaceDatabaseWrapper
 import dev.rivu.rivutalks.common.di.commonModule
 import dev.rivu.rivutalks.common.repository.PeopleInSpaceRepositoryInterface
 import dev.rivu.rivutalks.common.repository.platformModule

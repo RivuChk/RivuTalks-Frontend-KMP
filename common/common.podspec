@@ -1,11 +1,11 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'common'
     spec.version                  = '1.0'
-    spec.homepage                 = 'https://github.com/joreilly/PeopleInSpace'
+    spec.homepage                 = 'https://github.com/RivuChk/RivuTalks-Frontend-KMP'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'PeopleInSpace'
+    spec.summary                  = 'RivuTalks'
     spec.vendored_frameworks      = 'build/cocoapods/framework/common.framework'
     spec.libraries                = 'c++'
                 
