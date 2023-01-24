@@ -41,3 +41,8 @@ afterEvaluate {
         versions.webpackCli.version = "4.10.0"
     }
 }
+// Heroku Deployment (chapter 9)
+tasks.register("stage") {
+    dependsOn("build")
+}
+tasks.getByName("build").finalizedBy("browserWebpack").finalizedBy("stage")
