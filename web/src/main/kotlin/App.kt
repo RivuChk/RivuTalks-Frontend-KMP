@@ -93,15 +93,5 @@ val App = functionalComponent<RProps> {
             }
         }
 
-        if (issPosition.latitude != 0.0 && issPosition.longitude != 0.0) {
-            Space(16.px)
-            Typography("subtitle1", buildString {
-                append("ISS Position: ")
-                append("Latitude = ${issPosition.latitude}, ")
-                append("Longitude = ${issPosition.longitude}")
-            })
-            Space(4.px)
-            IssLocationMap(issPosition)
-        }
     }
 }

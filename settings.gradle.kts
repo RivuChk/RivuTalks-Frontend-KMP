@@ -13,13 +13,8 @@ pluginManagement {
     }
 }
 
-rootProject.name = "PeopleInSpace"
+rootProject.name = "RivuTalks-Frontend"
 
-include(":app", ":common", ":compose-desktop")
-include(":compose-web")
+include(":app", ":common")
 include(":compose-ios")
-include(":wearApp")
-include(":wearApp-benchmark")
 include(":web")
-include(":backend")
-include(":graphql-server")
