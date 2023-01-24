@@ -1,9 +1,8 @@
 package dev.rivu.rivutalks.common.di
 
 import dev.rivu.rivutalks.common.remote.PeopleInSpaceApi
-import dev.rivu.rivutalks.common.repository.PeopleInSpaceRepository
-import dev.rivu.rivutalks.common.repository.PeopleInSpaceRepositoryInterface
-import dev.rivu.rivutalks.common.repository.platformModule
+import dev.rivu.rivutalks.common.remote.RivuTalksApi
+import dev.rivu.rivutalks.common.repository.*
 import io.ktor.client.*
 import io.ktor.client.engine.*
 import io.ktor.client.plugins.contentnegotiation.*
@@ -33,8 +32,10 @@ fun commonModule(enableNetworkLogs: Boolean) = module {
     single { CoroutineScope(Dispatchers.Default + SupervisorJob() ) }
 
     single<PeopleInSpaceRepositoryInterface> { PeopleInSpaceRepository() }
+    single<RivuTalksRepositoryInterface> { RivuTalksRepository() }
 
     single { PeopleInSpaceApi(get()) }
+    single { RivuTalksApi(get()) }
 }
 
 fun createJson() = Json { isLenient = true; ignoreUnknownKeys = true }

@@ -1,0 +1,42 @@
+
+
+CREATE TABLE Blog(
+id TEXT NOT NULL PRIMARY KEY,
+publishDate INTEGER NOT NULL,
+summary TEXT NOT NULL,
+title TEXT NOT NULL,
+url TEXT NOT NULL UNIQUE,
+siteId TEXT NOT NULL,
+FOREIGN KEY (siteId) REFERENCES Site(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Site(
+id TEXT NOT NULL PRIMARY KEY,
+description TEXT NOT NULL,
+title TEXT NOT NULL,
+url TEXT NOT NULL UNIQUE
+);
+
+insertItem  {
+    INSERT OR REPLACE INTO Site(id, description, title, url)VALUES(?,?,?, ?);
+    INSERT OR REPLACE INTO Blog(id, publishDate, summary, title, url, siteId)VALUES(?,?,?,?, ?, ?);
+}
+
+
+
+selectAll:
+SELECT Blog.*, Site.* FROM Blog LEFT JOIN Site ON Site.id == Blog.siteId;
+
+selectAllBlogs:
+SELECT * FROM Blog;
+
+selectBlog:
+SELECT * FROM Blog WHERE Blog.id = ?;
+selectBlogWithUrl:
+SELECT * FROM Blog WHERE Blog.url = ?;
+
+
+deleteAll {
+    DELETE FROM Site;
+    DELETE FROM Blog;
+}

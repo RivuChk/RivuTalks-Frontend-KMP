@@ -1,5 +1,6 @@
 import dev.rivu.rivutalks.common.di.initKoin
 import dev.rivu.rivutalks.common.repository.PeopleInSpaceRepositoryInterface
+import dev.rivu.rivutalks.common.repository.RivuTalksRepositoryInterface
 import kotlinx.coroutines.InternalCoroutinesApi
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
@@ -8,11 +9,13 @@ import react.createContext
 import react.dom.render
 
 object AppDependencies : KoinComponent {
-    val repository: PeopleInSpaceRepositoryInterface
+    val peopleRepository: PeopleInSpaceRepositoryInterface
+    val rivutalksRepository: RivuTalksRepositoryInterface
 
     init {
         initKoin()
-        repository = get()
+        peopleRepository = get()
+        rivutalksRepository = get()
     }
 }
 

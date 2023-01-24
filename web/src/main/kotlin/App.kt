@@ -1,10 +1,7 @@
 import dev.rivu.rivutalks.common.remote.Assignment
 import dev.rivu.rivutalks.common.remote.IssPosition
 import components.*
-import components.materialui.AppBar
-import components.materialui.Card
-import components.materialui.Grid
-import components.materialui.Toolbar
+import components.materialui.*
 import kotlinx.coroutines.*
 import kotlinx.css.margin
 import kotlinx.css.padding
@@ -16,7 +13,8 @@ import styled.css
 @InternalCoroutinesApi
 val App = functionalComponent<RProps> {
     val appDependencies = useContext(AppDependenciesContext)
-    val repository = appDependencies.repository
+    val peopleRepository = appDependencies.peopleRepository
+    val rivutalksRepository = appDependencies.rivutalksRepository
 
     val (people, setPeople) = useState(emptyList<Assignment>())
     val (issPosition, setIssPosition) = useState(IssPosition(0.0, 0.0))
@@ -26,11 +24,11 @@ val App = functionalComponent<RProps> {
         val mainScope = MainScope()
 
         mainScope.launch {
-            val people = repository.fetchPeople()
+            val people = peopleRepository.fetchPeople()
             setPeople(people)
             setSelectedPerson(people.first())
 
-            repository.pollISSPosition().collect {
+            peopleRepository.pollISSPosition().collect {
                 setIssPosition(it)
             }
         }
@@ -42,7 +40,29 @@ val App = functionalComponent<RProps> {
                 margin(0.px)
             }
             Toolbar {
-                Typography("h6", "People In Space")
+                Grid {
+                    attrs {
+                        container = true
+                        spacing = 4
+                        justify = "flex-start"
+                        alignItems = "stretch"
+                    }
+                    Avatar {
+                        attrs.src = "rivu_talks_logo.jpg"
+                    }
+
+                }
+                Grid {
+                    attrs {
+                        container = true
+                        spacing = 4
+                        justify = "flex-start"
+                        alignItems = "stretch"
+                    }
+                    Typography("h6", "Rivu Talks")
+
+                }
+
             }
         }
 
