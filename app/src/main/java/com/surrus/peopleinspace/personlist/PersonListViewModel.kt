@@ -2,8 +2,8 @@ package com.surrus.peopleinspace.personlist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.surrus.common.remote.Assignment
-import com.surrus.common.repository.PeopleInSpaceRepositoryInterface
+import dev.rivu.rivutalks.common.remote.Assignment
+import dev.rivu.rivutalks.common.repository.PeopleInSpaceRepositoryInterface
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn

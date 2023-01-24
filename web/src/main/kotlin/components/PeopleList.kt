@@ -1,6 +1,6 @@
 package components
 
-import com.surrus.common.remote.Assignment
+import dev.rivu.rivutalks.common.remote.Assignment
 import components.materialui.Avatar
 import components.materialui.ListItem
 import components.materialui.ListItemAvatar

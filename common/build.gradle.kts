@@ -42,15 +42,7 @@ kotlin {
 
 
     val sdkName: String? = System.getenv("SDK_NAME")
-    val isWatchOSDevice = sdkName.orEmpty().startsWith("watchos")
-    if (isWatchOSDevice) {
-        watchosArm64("watch")
-    } else {
-        watchosX64("watch")
-    }
 
-    //macosX64("macOS")
-    macosArm64("macOS")
     android()
     jvm()
 
@@ -143,18 +135,7 @@ kotlin {
             iosSimulatorArm64Test.dependsOn(this)
         }
 
-        val watchMain by getting {
-            dependencies {
-                implementation(Deps.Ktor.clientDarwin)
-                implementation(Deps.SqlDelight.nativeDriver)
-            }
-        }
-        val macOSMain by getting {
-            dependencies {
-                implementation(Deps.Ktor.clientDarwin)
-                implementation(Deps.SqlDelight.nativeDriverMacos)
-            }
-        }
+        
         val jsMain by getting {
             dependencies {
                 implementation(Deps.Ktor.clientJs)

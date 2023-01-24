@@ -1,5 +1,5 @@
-import com.surrus.common.di.initKoin
-import com.surrus.common.repository.PeopleInSpaceRepositoryInterface
+import dev.rivu.rivutalks.common.di.initKoin
+import dev.rivu.rivutalks.common.repository.PeopleInSpaceRepositoryInterface
 import kotlinx.coroutines.InternalCoroutinesApi
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get

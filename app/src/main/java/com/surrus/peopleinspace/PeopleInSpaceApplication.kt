@@ -2,7 +2,7 @@ package com.surrus.peopleinspace
 
 import android.app.Application
 import co.touchlab.kermit.Logger
-import com.surrus.common.di.initKoin
+import dev.rivu.rivutalks.common.di.initKoin
 import com.surrus.peopleinspace.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

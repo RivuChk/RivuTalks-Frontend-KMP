@@ -3,8 +3,8 @@ package com.surrus.peopleinspace.persondetails
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.surrus.common.remote.Assignment
-import com.surrus.common.repository.PeopleInSpaceRepositoryInterface
+import dev.rivu.rivutalks.common.remote.Assignment
+import dev.rivu.rivutalks.common.repository.PeopleInSpaceRepositoryInterface
 import com.surrus.peopleinspace.persondetails.navigation.PersonDetailsDestination
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map

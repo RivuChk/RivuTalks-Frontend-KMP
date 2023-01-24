@@ -4,12 +4,8 @@ package com.surrus.peopleinspace.issposition
 
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.TopAppBarDefaults
@@ -27,7 +23,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.surrus.common.remote.IssPosition
+import dev.rivu.rivutalks.common.remote.IssPosition
 import com.surrus.peopleinspace.R
 import com.surrus.peopleinspace.ui.PeopleInSpaceTopAppBar
 import org.koin.androidx.compose.getViewModel

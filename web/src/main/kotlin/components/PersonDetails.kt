@@ -1,14 +1,10 @@
 package components
 
-import com.surrus.common.remote.Assignment
+import dev.rivu.rivutalks.common.remote.Assignment
 import kotlinx.css.Align
-import kotlinx.css.ObjectFit
 import kotlinx.css.alignSelf
-import kotlinx.css.borderRadius
 import kotlinx.css.margin
-import kotlinx.css.objectFit
 import kotlinx.css.padding
-import kotlinx.css.pct
 import kotlinx.css.px
 import react.RBuilder
 import styled.css

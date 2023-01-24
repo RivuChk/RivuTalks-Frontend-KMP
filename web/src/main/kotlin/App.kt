@@ -1,17 +1,15 @@
-import com.surrus.common.remote.Assignment
-import com.surrus.common.remote.IssPosition
+import dev.rivu.rivutalks.common.remote.Assignment
+import dev.rivu.rivutalks.common.remote.IssPosition
 import components.*
 import components.materialui.AppBar
 import components.materialui.Card
 import components.materialui.Grid
 import components.materialui.Toolbar
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collect
 import kotlinx.css.margin
 import kotlinx.css.padding
 import kotlinx.css.px
 import react.*
-import react.dom.*
 import styled.css
 
 

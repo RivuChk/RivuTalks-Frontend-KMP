@@ -41,7 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
-import com.surrus.common.remote.Assignment
+import dev.rivu.rivutalks.common.remote.Assignment
 import com.surrus.peopleinspace.ui.PeopleInSpaceTopAppBar
 import com.surrus.peopleinspace.ui.PersonProvider
 import org.koin.androidx.compose.getViewModel
