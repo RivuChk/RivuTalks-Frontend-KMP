@@ -1,7 +1,13 @@
 package com.surrus.peopleinspace
 
-import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertCountEquals
+import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.onChildren
+import androidx.compose.ui.test.onChildAt
+import androidx.compose.ui.test.SemanticsMatcher
 import com.surrus.peopleinspace.issposition.ISSPositionMapTag
 import com.surrus.peopleinspace.issposition.ISSPositionScreen
 import com.surrus.peopleinspace.issposition.ISSPositionUiState

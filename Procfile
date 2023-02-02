@@ -1,1 +1,1 @@
-web: web/build/distributions/web.js
+web: build/js

@@ -6,7 +6,7 @@ import dev.rivu.rivutalks.common.repository.PeopleInSpaceRepositoryInterface
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
-class PeopleInSpaceRepositoryFake: PeopleInSpaceRepositoryInterface {
+class PeopleInSpaceRepositoryFake : PeopleInSpaceRepositoryInterface {
     val peopleList = listOf(
         Assignment("Apollo 11", "Neil Armstrong"),
         Assignment("Apollo 11", "Buzz Aldrin")
