@@ -59,7 +59,7 @@ val App = functionalComponent<RProps> {
                         justify = "flex-mid"
                         alignItems = "stretch"
                     }
-                    Typography("h4", "Rivu Talks")
+                    Typography("h4", "Rivu Talks - Dev")
 
                 }
 
