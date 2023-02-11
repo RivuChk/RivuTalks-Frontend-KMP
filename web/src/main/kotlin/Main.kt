@@ -7,6 +7,8 @@ import org.koin.core.component.get
 import react.child
 import react.createContext
 import react.dom.render
+import kotlinx.browser.document
+
 
 object AppDependencies : KoinComponent {
     val peopleRepository: PeopleInSpaceRepositoryInterface

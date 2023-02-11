@@ -3,6 +3,8 @@ package dev.rivu.rivutalks.common.remote
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.request.*
+import io.ktor.client.utils.*
+import io.ktor.http.*
 import kotlinx.serialization.Serializable
 import org.koin.core.component.KoinComponent
 
@@ -35,5 +37,10 @@ class RivuTalksApi(
     private val client: HttpClient,
     private val baseUrl: String,
 ) : KoinComponent {
-    suspend fun fetchBlogs() = client.get("$baseUrl/blogs").body<BlogsResult>()
+    suspend fun fetchBlogs() = client.get("$baseUrl/blogs") {
+        buildHeaders {
+            append(HttpHeaders.AccessControlAllowOrigin, "*")
+            append(HttpHeaders.ContentType, ContentType.Application.Json)
+        }
+    }.body<BlogsResult>()
 }
