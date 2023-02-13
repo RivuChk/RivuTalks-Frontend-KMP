@@ -1,13 +1,17 @@
 package dev.rivu.rivutalks.common.di
 
-import dev.rivu.rivutalks.common.remote.PeopleInSpaceApi
 import dev.rivu.rivutalks.common.remote.RivuTalksApi
-import dev.rivu.rivutalks.common.repository.*
-import io.ktor.client.*
-import io.ktor.client.engine.*
-import io.ktor.client.plugins.contentnegotiation.*
-import io.ktor.client.plugins.logging.*
-import io.ktor.serialization.kotlinx.json.*
+import dev.rivu.rivutalks.common.repository.RivuTalksRepository
+import dev.rivu.rivutalks.common.repository.RivuTalksRepositoryInterface
+import dev.rivu.rivutalks.common.repository.platformModule
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.logging.DEFAULT
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
+import io.ktor.client.plugins.logging.Logging
+import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -32,14 +36,12 @@ fun commonModule(enableNetworkLogs: Boolean) = module {
 
     single { CoroutineScope(Dispatchers.Default + SupervisorJob() ) }
 
-    single<PeopleInSpaceRepositoryInterface> { PeopleInSpaceRepository() }
     single<RivuTalksRepositoryInterface> { RivuTalksRepository() }
 
-    single { PeopleInSpaceApi(get()) }
     single { RivuTalksApi(get(), get(named("baseUrl"))) }
 
     single(named("baseUrl")) {
-        "https://rivutalks-api.rivu.dev/api/v1"
+        "http://0.0.0.0:8084/api/v1"
     }
 }
 

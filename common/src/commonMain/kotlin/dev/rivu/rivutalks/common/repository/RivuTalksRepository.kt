@@ -1,13 +1,9 @@
 package dev.rivu.rivutalks.common.repository
 
 import co.touchlab.kermit.Logger
-import com.rickclephas.kmp.nativecoroutines.NativeCoroutineScope
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
-import com.squareup.sqldelight.runtime.coroutines.asFlow
-import com.squareup.sqldelight.runtime.coroutines.mapToList
-import dev.rivu.rivutalks.common.remote.*
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.*
+import dev.rivu.rivutalks.common.remote.Blog
+import dev.rivu.rivutalks.common.remote.RivuTalksApi
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -19,13 +15,15 @@ interface RivuTalksRepositoryInterface {
 class RivuTalksRepository : KoinComponent, RivuTalksRepositoryInterface {
     private val rivuBlogsApi: RivuTalksApi by inject()
 
-    val logger = Logger.withTag("PeopleInSpaceRepository")
+    val logger = Logger.withTag("RivuTalksRepository")
 
     @NativeCoroutines
     override suspend fun fetchBlogs(): List<Blog> {
         // the main reason we need to do this check is that sqldelight isn't currently
         // setup for javascript client
-        return rivuBlogsApi.fetchBlogs().blogs
+        val blogsResponse = rivuBlogsApi.fetchBlogs().blogs
+        logger.d(message = "Success $blogsResponse")
+        return blogsResponse
     }
 
     companion object {

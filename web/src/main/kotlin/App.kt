@@ -1,26 +1,32 @@
-import dev.rivu.rivutalks.common.remote.Assignment
-import dev.rivu.rivutalks.common.remote.IssPosition
-import components.*
-import components.materialui.*
+
+import components.BlogList
+import components.Typography
+import components.materialui.AppBar
+import components.materialui.Avatar
+import components.materialui.Grid
+import components.materialui.Toolbar
 import dev.rivu.rivutalks.common.remote.Blog
-import kotlinx.coroutines.*
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import kotlinx.css.margin
-import kotlinx.css.padding
 import kotlinx.css.px
-import react.*
+import react.Fragment
+import react.RProps
+import react.functionalComponent
+import react.useContext
+import react.useEffectWithCleanup
+import react.useState
 import styled.css
 
 
 @InternalCoroutinesApi
 val App = functionalComponent<RProps> {
     val appDependencies = useContext(AppDependenciesContext)
-    val peopleRepository = appDependencies.peopleRepository
     val rivutalksRepository = appDependencies.rivutalksRepository
 
-    val (people, setPeople) = useState(emptyList<Assignment>())
     val (blogs, setBlogs) = useState(emptyList<Blog>())
-    val (issPosition, setIssPosition) = useState(IssPosition(0.0, 0.0))
-    val (selectedPerson, setSelectedPerson) = useState<Assignment?>(null)
     val (selectedBlog, setSelectedBlog) = useState<Blog?>(null)
 
     useEffectWithCleanup(dependencies = listOf()) {

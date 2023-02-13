@@ -1,6 +1,5 @@
 package components
 
-import dev.rivu.rivutalks.common.remote.Assignment
 import dev.rivu.rivutalks.common.remote.Blog
 import kotlinx.css.Align
 import kotlinx.css.alignSelf
