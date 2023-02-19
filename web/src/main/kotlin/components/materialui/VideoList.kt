@@ -13,6 +13,7 @@ import kotlinx.css.pct
 import kotlinx.css.px
 import kotlinx.css.width
 import react.RBuilder
+import react.dom.a
 import react.dom.iframe
 import styled.css
 
@@ -36,9 +37,12 @@ fun RBuilder.VideoList(
                                 CardContent {
                                     attrs {
                                         width = 100.em
+                                        //onSelect(item)
                                     }
-                                    Typography("h4", video.title)
-                                    Typography("body2", video.description ?: "No description")
+                                    a(href = video.url, target = "_blank") {
+                                        Typography("h4", video.title)
+                                        Typography("body2", video.description ?: "No description")
+                                    }
                                 }
                             }
                             VIDEO -> {

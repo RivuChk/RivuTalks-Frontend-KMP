@@ -3,6 +3,7 @@ package components
 import AppDependenciesContext
 import components.materialui.VideoList
 import dev.rivu.rivutalks.common.remote.models.VideoModel
+import kotlinx.browser.window
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -25,6 +26,10 @@ val VideosSection = functionalComponent<RProps> {
         mainScope.launch {
             val videos = rivutalksRepository.fetchVideoContents()
             setVideos(videos)
+
+            selectedVideo?.let { video ->
+                window.open(video.url, target = "_blank")
+            }
         }
         return@useEffectWithCleanup { mainScope.cancel() }
     }
