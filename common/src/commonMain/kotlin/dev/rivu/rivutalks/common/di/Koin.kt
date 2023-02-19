@@ -41,7 +41,7 @@ fun commonModule(enableNetworkLogs: Boolean) = module {
     single { RivuTalksApi(get(), get(named("baseUrl"))) }
 
     single(named("baseUrl")) {
-        "http://0.0.0.0:8084/api/v1"
+        "https://rivutalks-api.rivu.dev/api/v1"
     }
 }
 

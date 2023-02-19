@@ -1,6 +1,6 @@
 package components
 
-import dev.rivu.rivutalks.common.remote.Blog
+import dev.rivu.rivutalks.common.remote.models.Blog
 import kotlinx.css.Align
 import kotlinx.css.alignSelf
 import kotlinx.css.margin
@@ -10,7 +10,6 @@ import react.RBuilder
 import react.dom.a
 import styled.css
 import styled.styledDiv
-import styled.styledIframe
 import styled.styledImg
 
 fun RBuilder.BlogDetails(blog: Blog) {
