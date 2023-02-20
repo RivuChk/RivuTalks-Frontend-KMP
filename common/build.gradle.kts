@@ -26,7 +26,28 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    namespace = "com.surrus.common"
+    namespace = "dev.rivu.rivutalks"
+
+
+
+    buildTypes {
+        all {
+            buildConfigField("String","BaseUrl", "\"https://rivutalks-api.rivu.dev/api/v1\"")
+        }
+        release {
+            buildConfigField("String","BaseUrl", "\"https://rivutalks-api.rivu.dev/api/v1\"")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        resources {
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+        }
+    }
 }
 
 

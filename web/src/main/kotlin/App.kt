@@ -1,7 +1,5 @@
 
-import AppDependencies.rivutalksRepository
 import components.AboutMeSection
-import components.BlogList
 import components.BlogSection
 import components.Typography
 import components.VideosSection
@@ -9,18 +7,13 @@ import components.materialui.AppBar
 import components.materialui.Avatar
 import components.materialui.Grid
 import components.materialui.Tab
-import components.materialui.TabPanel
 import components.materialui.Tabs
 import components.materialui.Toolbar
 import components.models.Section
-import dev.rivu.rivutalks.common.remote.models.Blog
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.NonCancellable.children
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import kotlinx.css.Color
-import kotlinx.css.background
 import kotlinx.css.margin
 import kotlinx.css.px
 import org.w3c.dom.events.Event
@@ -29,7 +22,6 @@ import react.RProps
 import react.child
 import react.dom.div
 import react.functionalComponent
-import react.useContext
 import react.useEffectWithCleanup
 import react.useState
 import styled.css

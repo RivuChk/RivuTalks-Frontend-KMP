@@ -3,6 +3,7 @@ package dev.rivu.rivutalks.common.di
 import dev.rivu.rivutalks.common.remote.RivuTalksApi
 import dev.rivu.rivutalks.common.repository.RivuTalksRepository
 import dev.rivu.rivutalks.common.repository.RivuTalksRepositoryInterface
+import dev.rivu.rivutalks.common.repository.baseUrl
 import dev.rivu.rivutalks.common.repository.platformModule
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngine
@@ -41,7 +42,7 @@ fun commonModule(enableNetworkLogs: Boolean) = module {
     single { RivuTalksApi(get(), get(named("baseUrl"))) }
 
     single(named("baseUrl")) {
-        "https://rivutalks-api.rivu.dev/api/v1"
+        baseUrl()
     }
 }
 

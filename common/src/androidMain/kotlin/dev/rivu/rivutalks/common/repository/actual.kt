@@ -18,3 +18,5 @@ actual fun platformModule() = module {
     }
     single { Android.create() }
 }
+
+actual fun baseUrl(): String = "https://rivutalks-api.rivu.dev/api/v1" //TODO: Figura eout why BuildConfig is not working here
