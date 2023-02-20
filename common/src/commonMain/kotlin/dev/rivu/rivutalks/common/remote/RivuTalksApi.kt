@@ -1,5 +1,6 @@
 package dev.rivu.rivutalks.common.remote
 
+import dev.rivu.rivutalks.common.remote.models.AboutMe
 import dev.rivu.rivutalks.common.remote.models.BlogsResult
 import dev.rivu.rivutalks.common.remote.models.VideoContentResult
 import io.ktor.client.HttpClient
@@ -39,4 +40,8 @@ class RivuTalksApi(
     suspend fun fetchVideoContents() = client.get("$baseUrl/videocontents") {
         commonHeaders
     }.body<VideoContentResult>()
+
+    suspend fun fetchAboutMe() = client.get("$baseUrl/about-me") {
+        commonHeaders
+    }.body<AboutMe>()
 }

@@ -88,6 +88,7 @@ kotlin {
                 with(Deps.Log) {
                     api(kermit)
                 }
+                api("org.jetbrains:markdown:0.4.0")
             }
         }
         val commonTest by getting {

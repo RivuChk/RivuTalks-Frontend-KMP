@@ -1,5 +1,6 @@
 
 import AppDependencies.rivutalksRepository
+import components.AboutMeSection
 import components.BlogList
 import components.BlogSection
 import components.Typography
@@ -134,12 +135,7 @@ val App = functionalComponent<RProps> {
                         child(BlogSection)
                     }
                     is Section.AboutSection -> div {
-                        child(
-                            div {
-                                Typography("h1", "Something about me will go here.")
-                                Typography("h4", "Wait for it. Everything good requires a little patience")
-                            }
-                        )
+                        child(AboutMeSection)
                     }
                     is Section.VideosSection -> div {
                         child(VideosSection)

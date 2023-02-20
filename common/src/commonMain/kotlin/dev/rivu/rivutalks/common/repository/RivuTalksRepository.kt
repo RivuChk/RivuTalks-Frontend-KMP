@@ -4,6 +4,7 @@ import co.touchlab.kermit.Logger
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import dev.rivu.rivutalks.common.remote.models.Blog
 import dev.rivu.rivutalks.common.remote.RivuTalksApi
+import dev.rivu.rivutalks.common.remote.models.AboutMe
 import dev.rivu.rivutalks.common.remote.models.VideoModel
 import kotlinx.coroutines.delay
 import org.koin.core.component.KoinComponent
@@ -18,6 +19,8 @@ interface RivuTalksRepositoryInterface {
     suspend fun fetchVideos(): List<VideoModel>
     @NativeCoroutines
     suspend fun fetchVideoContents(): List<VideoModel>
+    @NativeCoroutines
+    suspend fun fetchAboutMe(): AboutMe
 }
 
 class RivuTalksRepository : KoinComponent, RivuTalksRepositoryInterface {
@@ -49,6 +52,13 @@ class RivuTalksRepository : KoinComponent, RivuTalksRepositoryInterface {
     @NativeCoroutines
     override suspend fun fetchVideoContents(): List<VideoModel> {
         val response = rivuBlogsApi.fetchVideoContents().contents
+        logger.d(message = "Success $response")
+        return response
+    }
+
+    @NativeCoroutines
+    override suspend fun fetchAboutMe(): AboutMe {
+        val response = rivuBlogsApi.fetchAboutMe()
         logger.d(message = "Success $response")
         return response
     }
