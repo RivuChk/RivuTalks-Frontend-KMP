@@ -1,7 +1,6 @@
 package components
 
 import AppDependenciesContext
-import components.materialui.VideoList
 import dev.rivu.rivutalks.common.remote.models.VideoModel
 import kotlinx.browser.window
 import kotlinx.coroutines.MainScope

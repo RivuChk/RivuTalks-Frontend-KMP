@@ -52,11 +52,22 @@ val AboutMeSection = functionalComponent<RProps> {
         div {
             Typography("h4", aboutMeHeader)
 
-            val flavour = CommonMarkFlavourDescriptor()
-            val parsedTree = MarkdownParser(flavour).buildMarkdownTreeFromString(aboutMeDetails)
-            val htmlStr = HtmlGenerator(aboutMeDetails, parsedTree, flavour).generateHtml()
+            div {
+                attrs {
 
-            +htmlStr//TODO: Fix the html display
+                    val flavour = CommonMarkFlavourDescriptor()
+                    val parsedTree = MarkdownParser(flavour).buildMarkdownTreeFromString(aboutMeDetails)
+                    val htmlStr = HtmlGenerator(aboutMeDetails, parsedTree, flavour).generateHtml()
+
+                    unsafe {
+                        +htmlStr//breaks the app
+                    }
+
+                }
+
+
+
+            }
         }
 
     }

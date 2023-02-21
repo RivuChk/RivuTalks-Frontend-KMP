@@ -1,21 +1,17 @@
-package components.materialui
+package components
 
-import components.Typography
-import dev.rivu.rivutalks.common.remote.models.Blog
+import components.materialui.Card
+import components.materialui.CardContent
+import components.materialui.CardMedia
+import components.materialui.CircularProgress
+import components.materialui.List
+import components.materialui.ListItem
 import dev.rivu.rivutalks.common.remote.models.ContentType.CHANNEL
 import dev.rivu.rivutalks.common.remote.models.ContentType.VIDEO
 import dev.rivu.rivutalks.common.remote.models.VideoModel
-import kotlinx.css.ObjectFit
 import kotlinx.css.em
-import kotlinx.css.height
-import kotlinx.css.objectFit
-import kotlinx.css.pct
-import kotlinx.css.px
-import kotlinx.css.width
 import react.RBuilder
 import react.dom.a
-import react.dom.iframe
-import styled.css
 
 
 fun RBuilder.VideoList(
