@@ -2,13 +2,14 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("com.github.ben-manes.versions")
+    id("com.google.devtools.ksp")
 }
 
 android {
     compileSdk = AndroidSdk.compile
 
     defaultConfig {
-        applicationId = "com.surrus.peopleinspace"
+        applicationId = "dev.rivu.rivutalks"
         minSdk = AndroidSdk.min
         targetSdk = AndroidSdk.target
 
@@ -50,7 +51,7 @@ android {
         resources.excludes.add("META-INF/AL2.0")
         resources.excludes.add("META-INF/LGPL2.1")
     }
-    namespace = "com.surrus.peopleinspace"
+    namespace = "dev.rivu.rivutalks"
 
     testOptions {
         managedDevices {
@@ -60,6 +61,14 @@ android {
                     apiLevel = 32
                     systemImageSource = "google"
                 }
+            }
+        }
+    }
+
+    applicationVariants.all {
+        kotlin.sourceSets {
+            getByName(name) {
+                kotlin.srcDir("build/generated/ksp/$name/kotlin")
             }
         }
     }
@@ -94,6 +103,10 @@ dependencies {
         implementation(coilCompose)
         implementation(uiTooling)
     }
+
+    implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
+    implementation ("io.github.raamcosta.compose-destinations:core:1.8.33-beta")
+    ksp("io.github.raamcosta.compose-destinations:ksp:1.8.33-beta")
 
     with(Deps.Koin) {
         implementation(core)

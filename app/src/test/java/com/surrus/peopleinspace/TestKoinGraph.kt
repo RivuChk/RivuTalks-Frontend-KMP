@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import dev.rivu.rivutalks.common.di.initKoin
-import com.surrus.peopleinspace.di.appModule
+import dev.rivu.rivutalks.di.appModule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

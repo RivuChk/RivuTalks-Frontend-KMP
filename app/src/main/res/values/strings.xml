@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">PeopleInSpace</string>
+    <string name="app_name">Rivu Talks</string>
     <string name="people_in_space">People In Space</string>
 
     <string name="people">People</string>
     <string name="iss_position">ISS Position</string>
+    <string name="videos_n_channels_header">Videos and Channels by Rivu Chakraborty</string>
 </resources>

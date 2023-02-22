@@ -1,12 +1,11 @@
 package dev.rivu.rivutalks.common.repository
 
 import com.squareup.sqldelight.android.AndroidSqliteDriver
+import dev.rivu.rivutalks.BuildConfig
 import dev.rivu.rivutalks.common.di.RivuTalksDatabaseWrapper
 import dev.rivu.rivutalks.db.RivuTalksDatabase
-
-import io.ktor.client.engine.android.*
+import io.ktor.client.engine.android.Android
 import org.koin.dsl.module
-
 
 
 actual fun platformModule() = module {
@@ -19,4 +18,4 @@ actual fun platformModule() = module {
     single { Android.create() }
 }
 
-actual fun baseUrl(): String = "https://rivutalks-api.rivu.dev/api/v1" //TODO: Figura eout why BuildConfig is not working here
+actual fun baseUrl(): String = BuildConfig.BaseUrl
